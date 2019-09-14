@@ -1,0 +1,37 @@
+<ion-header>
+
+  <ion-toolbar >
+    <ion-buttons slot="start">
+      <ion-menu-button menu="drawer"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>ERC Events Calendar </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="light">
+  <ion-card *ngFor="let event of events"  class="card" >
+
+    <ion-list class="content">
+      <ion-item text-wrap color="warning">
+        <h2>{{event.event}}</h2>
+      </ion-item>
+      <ion-item>
+        <h4>Scheduled Date: {{event.scheduled_date}}</h4>
+        
+        <h4 *ngIf="event.timeto < 1" style="color:brown">Time past event:<strong> {{(event.timeto * -1)}} days .</strong></h4>
+
+        <h4 *ngIf="event.timeto > 0" style="color:cornflowerblue">Time to event:<strong> {{event.timeto }} days .</strong></h4>
+      </ion-item>
+      <ion-item>
+        <h4><strong>Start Time:</strong> {{event.start_time}}</h4>
+        <h4><strong>End Time:</strong> {{event.end_time}}</h4>
+      </ion-item>
+      <ion-item text-wrap>
+        <h4><strong>Venue</strong> : {{event.venue}}</h4>
+      </ion-item>
+      <ion-item>
+        <h4>Created by: {{event.creator}}</h4>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+</ion-content>

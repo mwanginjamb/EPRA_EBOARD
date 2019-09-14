@@ -1,0 +1,50 @@
+<ion-header>
+
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Files</ion-title>
+  </ion-toolbar>
+  <ion-toolbar color="primary">
+    <ion-searchbar (input)="getItems($event)"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-row>
+    <ion-col>
+
+        <ion-card *ngFor="let item of files "  >
+          <ion-list>
+            <ion-item text-wrap color="secondary" (click)="openDoc(item.title)" lines="none"  detail>
+                  <ion-thumbnail item-start>
+                    <ion-icon name="document"></ion-icon>
+                  </ion-thumbnail>
+              <ion-label>
+                  <h3 text-wrap color="primary">{{item.title}}</h3>
+                  <div class="file-details">
+                  <p text-wrap>Upload Time : {{item.created_at}}</p>
+                  <p text-wrap>Size : {{convertSize(item.size)}} Kb</p>
+                  </div>
+              </ion-label>
+            </ion-item>
+            <ion-item lines="none">
+            <ion-buttons>
+                        <ion-button (click)="createAnnotation(item.title)" color="secondary"  fill="outline" slot="start">
+                          <ion-icon name="create"></ion-icon>
+                          Add Note
+                        </ion-button>
+
+                        <ion-button (click)="viewAnnotations(item.title)" color="primary"  fill="outline" slot="end">
+                          <ion-icon name="list-box"></ion-icon>
+                          Notes
+                        </ion-button>
+            </ion-buttons>
+            </ion-item>
+          </ion-list>
+        </ion-card>
+
+    </ion-col>
+  </ion-row>
+</ion-content>

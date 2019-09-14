@@ -1,0 +1,14 @@
+{
+  "name": "erc_eboard",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular",
+  "id": "fa2ade99",
+  "proxies": [
+    {
+      "path": "/",
+      "proxyUrl": "https://portal.erc.go.ke:8451"
+    }
+  ]
+}

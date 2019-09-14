@@ -1,0 +1,29 @@
+<ion-header>
+
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start" >
+      <ion-back-button ></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Annotations for : {{ fileid }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-fab vertical="top" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="showUserAnnotations()">
+      <ion-icon name="eye"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-card *ngFor="let annotation of annotations"  class="card">
+    <ion-list class="content">
+      <ion-item text-wrap color="secondary">
+        <p>{{annotation.annotation}}</p>
+      </ion-item>
+      <ion-item color="primary">
+        <ion-text>Creator: {{annotation.creator}}</ion-text>
+        <ion-text>Designation: {{annotation.creatorDesignation}}</ion-text>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+</ion-content>

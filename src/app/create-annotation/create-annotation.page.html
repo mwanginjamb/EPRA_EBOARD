@@ -1,0 +1,25 @@
+<ion-header>
+
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Create Document Annotation</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list>
+
+    <ion-item>
+      <ion-label position="floating">Annotation/Comment</ion-label>
+      <ion-textarea rows="6" cols="20" placeholder="Enter File notes here..." [(ngModel)]="annotation.annotation"></ion-textarea>
+    </ion-item>
+
+    <ion-button block (click)="postAnnotation()">Proceed</ion-button>
+  </ion-list>
+</ion-content>
+
