@@ -13,7 +13,8 @@ import { NavController } from '@ionic/angular';
 export class AuthService {
 
   // baseUrl = 'http://192.168.0.188:81/'; //local dev 'http://localhost:82/'
-  baseUrl = 'https://portal.erc.go.ke:8451/';
+  //LIVEURL = 'https://portal.erc.go.ke:8451/';
+  baseUrl = 'http://192.168.0.188:81/';
   results: string;
   identity: any;
   status: any;
@@ -62,8 +63,14 @@ export class AuthService {
     }
     getCalendar(){
       const action = this.baseUrl + '/site/events';
-      return this.http.get<{ results:{} }>(action);
+      return this.http.get<{ results: {} }>(action);
     }
+
+    getRsvpstatus() {
+      const action = this.baseUrl + '/site/rsvp-status';
+      return this.http.get<{ results: {} }>(action);
+    }
+
   saveIdentity(identity){
       this.identity = identity;
       this.storage.set('identity',identity);
@@ -71,10 +78,11 @@ export class AuthService {
   getIdentity() { // returns a promise always
     console.log('get identity here');
       return this.storage.get('userData')
-          .then((res) =>{
+          .then((res) => {
               if (res) {
                  // console.log(res);
                   this.identity = res;
+
               } else {
                   console.log('Ooh shoot, not a real user!!!');
               }

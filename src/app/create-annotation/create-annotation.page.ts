@@ -49,7 +49,7 @@ export class CreateAnnotationPage implements OnInit {
     console.log(JSON.stringify(this.data));
   }
   postAnnotation(){
-    //console.log(JSON.stringify(this.annotation));
+    // console.log(JSON.stringify(this.annotation));
     const loading = this.loadingCtrl
         .create({ keyboardClose: true, message: 'Posting Document Annotation'})
         .then(loadingEl => {
@@ -103,7 +103,7 @@ export class CreateAnnotationPage implements OnInit {
          });*/
   }
 
-  //Alert helper method
+  // Alert helper method
   private async showAlert(message){
     const customAlert = await this.alertCtrl.create({
       header : 'Annotation Status',

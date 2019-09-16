@@ -10,16 +10,24 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
 
-  <ion-list>
+  <ion-card>
 
-    <ion-item>
-      <ion-label position="floating">Annotation/Comment</ion-label>
-      <ion-textarea rows="6" cols="20" placeholder="Enter File notes here..." [(ngModel)]="annotation.annotation"></ion-textarea>
-    </ion-item>
+    <ion-card-content>
+      <ion-item>
+        <ion-label class="ion-text-wrap" position="fixed" color="primary">Annotation</ion-label>
+      </ion-item>
 
-    <ion-button block (click)="postAnnotation()">Proceed</ion-button>
-  </ion-list>
+      <ion-item>
+        <ion-textarea rows="6" cols="35" placeholder="Enter File notes here..." [(ngModel)]="annotation.annotation"></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+          <ion-button block (click)="postAnnotation()">Proceed</ion-button>
+      </ion-item>
+     
+    </ion-card-content>
+  </ion-card>
 </ion-content>
 
