@@ -13,19 +13,23 @@ import { HttpClientModule } from '@angular/common/http';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { DocumentViewer } from '@ionic-native/document-viewer/ngx';
 import { File} from '@ionic-native/file/ngx';
-import { FileTransfer } from '@ionic-native/file-transfer/ngx';
+
 
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { FormsModule } from '@angular/forms';
+import { RsvpPage } from './rsvp/rsvp.page';
+
 
 
 
 @NgModule({
   declarations: [
       AppComponent,
+      RsvpPage,
 
   ],
   entryComponents: [
-
+    RsvpPage
   ],
   imports: [
     BrowserModule,
@@ -33,6 +37,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
     AppRoutingModule,
     IonicStorageModule.forRoot(),
     HttpClientModule,
+    FormsModule,
   ],
   providers: [
     StatusBar,
@@ -41,7 +46,6 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
       FileOpener,
       DocumentViewer,
       File,
-      FileTransfer,
     InAppBrowser,
   ],
   bootstrap: [AppComponent]

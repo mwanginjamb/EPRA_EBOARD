@@ -13,6 +13,7 @@ const routes: Routes = [
   { path: 'splash', loadChildren: './splash/splash.module#SplashPageModule' },
   { path: 'my-annotations', loadChildren: './my-annotations/my-annotations.module#MyAnnotationsPageModule' },
   { path: 'update-annotation', loadChildren: './update-annotation/update-annotation.module#UpdateAnnotationPageModule' },
+  { path: 'rsvp', loadChildren: './rsvp/rsvp.module#RsvpPageModule' },
 ];
 
 @NgModule({

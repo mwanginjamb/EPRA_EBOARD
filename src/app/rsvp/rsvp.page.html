@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Event Response</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-list>
+        
+        <ion-item>
+            <ion-label>Event RSVP</ion-label>
+            <ion-select name="selectCode" multiple="false" [(ngModel)]="RsvpModel.RSVPStatusID" (ionChange)=processRSVP() >
+                  <ion-select-option *ngFor="let key of rsvpstatuses.results" value="{{key.RSVPStatusID}}">
+                       {{key.RSVPStatus}}
+                  </ion-select-option>
+                  
+            </ion-select>
+        </ion-item>
+
+        
+
+    </ion-list>
+
+</ion-content>

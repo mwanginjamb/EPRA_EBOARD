@@ -13,8 +13,8 @@ import { NavController } from '@ionic/angular';
 export class AuthService {
 
   // baseUrl = 'http://192.168.0.188:81/'; //local dev 'http://localhost:82/'
-  //LIVEURL = 'https://portal.erc.go.ke:8451/';
-  baseUrl = 'http://192.168.0.188:81/';
+  // LIVEURL = 'https://portal.erc.go.ke:8451/';
+  baseUrl = 'https://portal.erc.go.ke:8451/';
   results: string;
   identity: any;
   status: any;
@@ -47,13 +47,20 @@ export class AuthService {
        let url = this.baseUrl + 'site/addannotation?doc_title='+ annotation.doc_title+'&annotation='+ annotation.annotation+'&creator='+ annotation.creator+'&email='+ annotation.email+'&designation='+ annotation.designation;
        return this.http.get< {results: {status: any} }>(url);
    }
+
+   // post rsvp response
+   postRsvp(rsvp){
+      let url = this.baseUrl + 'site/rsvp?CalendarID='+ rsvp.CalendarID + '&RSVPStatusID='+ rsvp.RSVPStatusID + '&ProfileID=' + rsvp.ProfileID ;
+       return this.http.get< {results: {status: any} }>(url);
+   }
+
     getfolders(access) {
         console.log('getting folders:' + access);
         const url = this.baseUrl + 'site/folders?access=' + access;
         // @ts-ignore
         return this.http.get < {results: {} }>(url);
     }
-    getsubfolders(folderId){
+    getsubfolders(folderId) {
       const action = this.baseUrl + '/site/subfolders?fid=' + folderId;
       return this.http.get< {results: {} }>(action);
     }
