@@ -3,7 +3,7 @@ import { Platform, NavController, ToastController } from '@ionic/angular';
 import { ActivatedRoute, Router, NavigationExtras} from '@angular/router';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { File } from '@ionic-native/file/ngx';
-import { FileTransfer } from '@ionic-native/file-transfer/ngx';
+
 import { DocumentViewer } from '@ionic-native/document-viewer/ngx';
 import { Storage } from '@ionic/storage';
 import { AuthService } from '../auth.service';
@@ -34,7 +34,7 @@ export class FilesPage implements OnInit {
               private document: DocumentViewer,
                private fileopener: FileOpener,
               private file: File,
-               private ft: FileTransfer,
+               
                 private service: AuthService,
                  private navCtrl: NavController,
                  private toastCtrl: ToastController,

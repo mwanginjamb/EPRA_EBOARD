@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from '../auth.service';
-import { NavParams } from '@ionic/angular';
+import { NavParams, ModalController } from '@ionic/angular';
 
 
 
@@ -18,7 +18,7 @@ export class RsvpPage implements OnInit {
   @Input() CalendarID: number;
    @Input() ProfileID  ;
 
-  constructor(private service: AuthService, navParams: NavParams) {
+  constructor(private service: AuthService, public navParams: NavParams, private  modalCtrl: ModalController ) {
     this.rsvpstatus();
 
     this.RsvpModel.ProfileID = navParams.get('ProfileID');
@@ -44,6 +44,10 @@ export class RsvpPage implements OnInit {
     this.service. postRsvp(this.RsvpModel).subscribe((res) => {
       console.log(' results from post ' + JSON.stringify(res));
     });
+}
+
+OnCancel(){
+    this.modalCtrl.dismiss();
 }
 
 }
