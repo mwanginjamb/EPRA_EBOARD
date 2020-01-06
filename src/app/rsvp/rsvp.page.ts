@@ -25,8 +25,6 @@ export class RsvpPage implements OnInit {
     public toastCtrl: ToastController ) {
     this.RsvpModel.ProfileID = navParams.get('ProfileID');
     this.RsvpModel.CalendarID = navParams.get('CalendarID');
-
-    
   }
 
   ngOnInit() {
