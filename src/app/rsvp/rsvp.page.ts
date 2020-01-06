@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from '../auth.service';
-import { NavParams, ModalController } from '@ionic/angular';
+import { NavParams, ModalController, ToastController } from '@ionic/angular';
 
 
 
@@ -12,28 +12,32 @@ import { NavParams, ModalController } from '@ionic/angular';
 export class RsvpPage implements OnInit {
 
   RsvpModel = {'ProfileID': '', 'CalendarID': '', 'RSVPStatusID': ''};
-  rsvpstatuses = { results : {}};
+  rsvpstatuses: any;
 
   // Get data passed into componentProps
   @Input() CalendarID: number;
-   @Input() ProfileID  ;
+  @Input() ProfileID  ;
 
-  constructor(private service: AuthService, public navParams: NavParams, private  modalCtrl: ModalController ) {
-    this.rsvpstatus();
-
+  constructor(
+    private service: AuthService,
+    public navParams: NavParams,
+    private  modalCtrl: ModalController,
+    public toastCtrl: ToastController ) {
     this.RsvpModel.ProfileID = navParams.get('ProfileID');
     this.RsvpModel.CalendarID = navParams.get('CalendarID');
 
-    console.log(this.RsvpModel);
+    
   }
 
   ngOnInit() {
+    this.rsvpstatus();
+    console.log(this.RsvpModel);
   }
 
   // get rsvp status
   rsvpstatus() {
     return this.service.getRsvpstatus().subscribe(res => {
-     this.rsvpstatuses.results = (res.results) ;
+     this.rsvpstatuses = (res.results) ;
    });
  }
 
@@ -41,13 +45,25 @@ export class RsvpPage implements OnInit {
 
  processRSVP() {
     console.log(this.RsvpModel);
-    this.service. postRsvp(this.RsvpModel).subscribe((res) => {
-      console.log(' results from post ' + JSON.stringify(res));
+    this.service.postRsvp(this.RsvpModel).subscribe((res) => {
+      // console.log(' results from post ' + JSON.stringify(res));
+      if (res.results.status) {
+        this.presentToast();
+      }
     });
 }
 
-OnCancel(){
+OnCancel() {
     this.modalCtrl.dismiss();
+}
+
+async presentToast() {
+  const toast = await this.toastCtrl.create({
+    message: 'Event Response Posted Successfully.',
+    duration: 5000,
+    animated: true,
+  });
+  toast.present();
 }
 
 }

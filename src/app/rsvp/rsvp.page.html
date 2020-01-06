@@ -17,7 +17,7 @@
         <ion-item>
             <ion-label>Event RSVP</ion-label>
             <ion-select name="selectCode" multiple="false" [(ngModel)]="RsvpModel.RSVPStatusID" (ionChange)=processRSVP() >
-                  <ion-select-option *ngFor="let key of rsvpstatuses.results" value="{{key.RSVPStatusID}}">
+                  <ion-select-option *ngFor="let key of rsvpstatuses" value="{{key.RSVPStatusID}}">
                        {{key.RSVPStatus}}
                   </ion-select-option>
                   

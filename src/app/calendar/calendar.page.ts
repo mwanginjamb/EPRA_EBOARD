@@ -52,7 +52,7 @@ export class CalendarPage implements OnInit {
     });
   }
 
-  // User Identity
+  // User Identity-- asynchronous code here
 
     async getIdentity() {
     // use identity promise to extract username
