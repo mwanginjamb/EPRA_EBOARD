@@ -25,29 +25,32 @@ export class AnnotationsPage implements OnInit {
       private storage: Storage,
       private toastCtrl: ToastController,
       ) {
-    this.route.queryParams.subscribe(params =>{
-      if(this.router.getCurrentNavigation().extras.state) {
-        this.fileid = this.router.getCurrentNavigation().extras.state.file;
-      }
-    });
-    // get all annotations
-    this.getAnnotations(this.fileid);
-    this.getIdentity();
-    this.annotation_data.document = this.fileid;
-    this.annotation_data.username = this.identity;
+   
     
    
 
   }
 
   ngOnInit() {
-   
+    this.route.queryParams.subscribe(params =>{
+      
+      if(this.router.getCurrentNavigation().extras.state) {
+        this.fileid = this.router.getCurrentNavigation().extras.state.file;
+      }
+      console.log('Params: ' + this.fileid);
+    });
+    // get all annotations
+    this.getAnnotations(this.fileid);
+    this.getIdentity();
+    this.annotation_data.document = this.fileid;
+    this.annotation_data.username = this.identity;
 
     
     
 
   }
  getAnnotations(fileTitle){
+   console.log('Title: ' + fileTitle);
    this.authService.getannotation(fileTitle).subscribe((res) => {
      if(res){
        console.log(res.results);

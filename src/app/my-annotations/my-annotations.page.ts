@@ -19,6 +19,11 @@ export class MyAnnotationsPage implements OnInit {
        private service: AuthService,
         private alertCtrl: AlertController,
        ) {
+    
+    
+  }
+
+  ngOnInit() {
     this.route.queryParams.subscribe((params) => {
       if(this.router.getCurrentNavigation().extras.state){
         this.access = this.router.getCurrentNavigation().extras.state.annotations;
@@ -27,10 +32,6 @@ export class MyAnnotationsPage implements OnInit {
 
     console.log('Access credentials are :..' + JSON.stringify(this.access));
     this.getMyannotations(this.access.file,this.access.user);
-    
-  }
-
-  ngOnInit() {
     console.log('----------User annotations----------------');
     console.log(this.user_annotations);
   }

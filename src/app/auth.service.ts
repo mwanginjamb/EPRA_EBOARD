@@ -12,9 +12,11 @@ import { NavController } from '@ionic/angular';
 
 export class AuthService {
 
-  // baseUrl = 'http://192.168.0.188:81/'; //local dev 'http://localhost:82/'
-  // LIVEURL = 'https://portal.erc.go.ke:8451/';
-  baseUrl = 'https://portal.erc.go.ke:8451/';
+  // TestServerUrl = 'http://192.168.0.188:81/'; //local dev 'http://localhost:82/'
+  ercServer = 'https://portal.erc.go.ke:8451/';
+  devLocalServer = 'http://localhost:8001/';
+
+  baseUrl = this.devLocalServer;
   results: string;
   identity: any;
   status: any;
